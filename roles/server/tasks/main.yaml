@@ -1,0 +1,21 @@
+---
+- name: Start and Enable syslog-ng.
+  service:
+    name: syslog-ng
+    state: started
+    enabled: true
+
+- name: Create a directory to store logs.
+  file:
+    dest: "/var/log/hosts/"
+    state: directory
+
+- name: Create syslog-ng.conf.
+  template:
+    src: "roles/server/templates/syslog-ng.conf.j2"
+    dest: "/etc/syslog-ng/syslog-ng.conf"
+  
+- name: Restart syslog-ng.
+  service:
+    name: syslog-ng
+    state: restarted

@@ -8,5 +8,5 @@
   - role: prerequisites
   - role: client
     tags: client
-  # - role: server
-  #   tags: server
+  - role: server
+    tags: server
