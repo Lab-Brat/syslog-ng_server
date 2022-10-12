@@ -1,6 +1,12 @@
 ---
 - hosts: all
   become: true
+  vars:
+    - log_server: "192.168.56.134"
 
   roles:
   - role: prerequisites
+  - role: client
+    tags: client
+  # - role: server
+  #   tags: server

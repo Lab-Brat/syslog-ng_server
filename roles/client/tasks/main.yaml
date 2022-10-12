@@ -1,0 +1,16 @@
+---
+- name: Start and Enable syslog-ng.
+  service:
+    name: syslog-ng
+    state: started
+    enabled: true
+
+- name: Create syslog-ng.conf.
+  template:
+    src: "roles/client/templates/syslog-ng.conf.j2"
+    dest: "/etc/syslog-ng/syslog-ng.conf"
+  
+- name: Restart syslog-ng.
+  service:
+    name: syslog-ng
+    state: restarted
